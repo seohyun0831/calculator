@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>레트로 스타일 공학용 계산기</title>
+<style>
+  body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f0e6d2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .calculator {
+    background-color: #d3c1a5;
+    border: 3px solid #8b4513;
+    border-radius: 10px;
+    padding: 20px;
+    width: 320px;
+  }
+  .calculator-screen {
+    width: 100%;
+    border: 2px solid #8b4513;
+    background-color: #eae4d3;
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 24px;
+    color: #8b4513;
+    margin-bottom: 10px;
+  }
+  .button {
+    background-color: #8b4513;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 60px;
+  }
+  .button:hover {
+    background-color: #a0522d;
+  }
+  .button:active {
+    background-color: #6b8e23;
+  }
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+<div class="calculator">
+  <input type="text" class="calculator-screen" id="screen" disabled>
+  <div class="button-row">
+    <button class="button" onclick="press('1')">1</button>
+    <button class="button" onclick="press('2')">2</button>
+    <button class="button" onclick="press('3')">3</button>
+    <button class="button" onclick="press('+')">+</button>
+  </div>
+  <!-- More buttons here -->
+  <div class="button-row">
+    <button class="button" onclick="calculate()">=</button>
+    <button class="button" onclick="clearScreen()">C</button>
+  </div>
+</div>
+
+<script>
+  let screen = document.getElementById('screen');
+  function press(num) {
+    screen.value = screen.value + num;
+  }
+  function calculate() {
+    try {
+      screen.value = eval(screen.value);
+    } catch (e) {
+      screen.value = 'Error';
+    }
+  }
+  function clearScreen() {
+    screen.value = '';
+  }
+</script>
+</body>
+</html>
